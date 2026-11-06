@@ -1,0 +1,17 @@
+plugins { id 'fabric-loom' version '1.14.10' }
+version = '1.0.0'
+group = 'dev.vaileks'
+repositories { mavenCentral(); maven { url = 'https://maven.terraformersmc.com/releases/' } }
+dependencies {
+ minecraft 'com.mojang:minecraft:1.21.11'
+ mappings 'net.fabricmc:yarn:1.21.11+build.6:v2'
+ modImplementation 'net.fabricmc:fabric-loader:0.19.5'
+ modCompileOnly 'com.terraformersmc:modmenu:17.0.0'
+}
+tasks.withType(JavaCompile).configureEach { options.release = 21; options.encoding = 'UTF-8' }
+java { sourceCompatibility = JavaVersion.VERSION_21; targetCompatibility = JavaVersion.VERSION_21 }
+
+tasks.register('packageMods', Exec) {
+ dependsOn tasks.named('build')
+ commandLine 'python3', 'package_mods.py', 'dist/mods'
+}

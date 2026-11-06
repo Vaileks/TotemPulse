@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "dev.vaileks.pvp.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "ClientMixin",
+    "HudMixin",
+    "SlotMixin",
+    "NetworkMixin",
+    "UseMixin",
+    "StackMixin",
+    "PearlMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
